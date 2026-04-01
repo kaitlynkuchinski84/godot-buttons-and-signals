@@ -4,7 +4,8 @@ var force_coefficient = 20
 var apply_gravity : bool
 var gravity = ProjectSettings.get("physics/2d/default_gravity")
 
-
+func _rotate_me():
+	transform = transform.rotated_local(1)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if self.motion_mode == 0: # Motion Mode 0 is for "grounded", which is like a platformer
@@ -45,3 +46,7 @@ func _physics_process(delta):
 
 		
 
+
+
+func _on_area_2d_body_entered(body: Node2D):
+	_rotate_me()
